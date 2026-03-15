@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Van kruis tot vreugde</title>
+  <link rel="stylesheet" href="dist/reveal.css">
+  <link rel="stylesheet" href="dist/theme/black.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --r-background-color: #0a0a0f;
+      --r-main-font: 'Source Sans 3', sans-serif;
+      --r-heading-font: 'Playfair Display', serif;
+      --r-main-color: #e8e4df;
+      --r-heading-color: #f5f0ea;
+      --r-link-color: #c9a96e;
+      --r-link-color-hover: #e0c48a;
+      --r-main-font-size: 32px;
+      --accent: #c9a96e;
+      --accent-glow: rgba(201, 169, 110, 0.3);
+      --blood: #8b2020;
+      --dawn: #e8a840;
+      --hope: #5fa87f;
+    }
+
+    .reveal {
+      font-weight: 300;
+    }
+
+    .reveal h1, .reveal h2, .reveal h3 {
+      text-transform: none;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      line-height: 1.2;
+    }
+
+    .reveal h1 { font-size: 2.8em; }
+    .reveal h2 { font-size: 1.8em; color: var(--accent); }
+    .reveal h3 { font-size: 1.3em; color: var(--accent); font-weight: 400; font-style: italic; }
+
+    .reveal p, .reveal li {
+      line-height: 1.7;
+      font-size: 0.85em;
+    }
+
+    .reveal .subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1em;
+      color: var(--accent);
+      margin-top: 0.5em;
+    }
+
+    .reveal .verse {
+      background: rgba(201, 169, 110, 0.08);
+      border-left: 3px solid var(--accent);
+      padding: 0.8em 1.2em;
+      margin: 0.8em auto;
+      max-width: 85%;
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.95em;
+      line-height: 1.8;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .reveal .dilemma-card {
+      display: flex;
+      gap: 2em;
+      justify-content: center;
+      align-items: stretch;
+      margin: 1em auto;
+      max-width: 90%;
+    }
+
+    .reveal .dilemma-option {
+      flex: 1;
+      padding: 1.2em 1.5em;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 0.8em;
+      transition: all 0.4s ease;
+    }
+
+    .reveal .dilemma-option.left {
+      background: rgba(139, 32, 32, 0.2);
+      border: 1px solid rgba(139, 32, 32, 0.5);
+    }
+
+    .reveal .dilemma-option.right {
+      background: rgba(201, 169, 110, 0.12);
+      border: 1px solid rgba(201, 169, 110, 0.4);
+    }
+
+    .reveal .dilemma-option .arrow {
+      font-size: 1.8em;
+      display: block;
+      margin-bottom: 0.3em;
+    }
+
+    .reveal .big-icon {
+      font-size: 3em;
+      display: block;
+      margin-bottom: 0.3em;
+    }
+
+    .reveal .section-label {
+      display: inline-block;
+      font-size: 0.55em;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.2em 0.8em;
+      border-radius: 20px;
+      margin-bottom: 0.6em;
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 600;
+    }
+
+    .reveal .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .reveal .blood-highlight {
+      color: var(--blood);
+      font-weight: 600;
+    }
+
+    .reveal .hope-highlight {
+      color: var(--hope);
+      font-weight: 600;
+    }
+
+    .reveal .question {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15em;
+      color: var(--accent);
+      margin-top: 0.8em;
+    }
+
+    .reveal .vs {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.7em;
+      color: rgba(255,255,255,0.3);
+      font-weight: 400;
+    }
+
+    /* Slide-specific backgrounds */
+    .reveal .slide-background[data-background-hash*="cross"] {
+      background: radial-gradient(ellipse at 50% 120%, rgba(139,32,32,0.3), transparent 70%);
+    }
+
+    /* Easter slide bright styling */
+    .easter-slide h2 {
+      color: var(--dawn) !important;
+    }
+
+    .easter-slide .big-icon {
+      animation: glow-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% { text-shadow: 0 0 20px rgba(232, 168, 64, 0.4); }
+      50% { text-shadow: 0 0 40px rgba(232, 168, 64, 0.8), 0 0 80px rgba(232, 168, 64, 0.3); }
+    }
+
+    /* Cross drawing animation */
+    .cross-svg line {
+      stroke-dasharray: 200;
+      stroke-dashoffset: 200;
+      animation: draw-line 1.5s ease forwards;
+    }
+    .cross-svg line:nth-child(2) {
+      animation-delay: 0.5s;
+    }
+    @keyframes draw-line {
+      to { stroke-dashoffset: 0; }
+    }
+
+    /* Subtle grain overlay */
+    .reveal::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.5;
+    }
+
+    .reveal .fragment.fade-up {
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 0.6s ease;
+    }
+    .reveal .fragment.fade-up.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Activity list */
+    .reveal .activity-steps {
+      text-align: left;
+      max-width: 80%;
+      margin: 0.8em auto;
+    }
+    .reveal .activity-steps li {
+      margin-bottom: 0.5em;
+      list-style: none;
+      padding-left: 1.5em;
+      position: relative;
+    }
+    .reveal .activity-steps li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1.2em;
+    }
+
+    .reveal .closing-grid {
+      display: flex;
+      gap: 1.5em;
+      justify-content: center;
+      margin-top: 1em;
+    }
+    .reveal .closing-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 1em 1.5em;
+      flex: 1;
+      max-width: 45%;
+    }
+    .reveal .closing-card h3 {
+      margin-bottom: 0.3em;
+      font-size: 1em;
+    }
+    .reveal .closing-card p {
+      font-size: 0.75em;
+    }
+  </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+  <!-- ========== TITLE ========== -->
+  <section data-auto-animate data-background-gradient="radial-gradient(ellipse at 50% 50%, #1a1018 0%, #0a0a0f 100%)">
+    <svg class="cross-svg" width="80" height="110" viewBox="0 0 80 110" style="display:block;margin:0 auto 0.5em;">
+      <line x1="40" y1="5" x2="40" y2="105" stroke="#c9a96e" stroke-width="3" stroke-linecap="round"/>
+      <line x1="12" y1="35" x2="68" y2="35" stroke="#c9a96e" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <h1 data-id="title" style="margin-bottom:0;">Van kruis<br>tot vreugde</h1>
+    <p class="subtitle">Goede Vrijdag &amp; Pasen</p>
+  </section>
+
+  <!-- ========== DILEMMA INTRO ========== -->
+  <section data-auto-animate>
+    <div class="section-label">Binnenkomer</div>
+    <h2 data-id="d-title">Dilemma's</h2>
+    <p>Kies een kant — er is geen goed of fout.</p>
+  </section>
+
+  <!-- DILEMMA 1 -->
+  <section data-auto-animate>
+    <h2 data-id="d-title" style="font-size:1.2em;">Wat vind je erger?</h2>
+    <div class="dilemma-card">
+      <div class="dilemma-option left fragment fade-up" data-fragment-index="0">
+        <span class="arrow">⬅</span>
+        <strong>Onterecht straf krijgen</strong>
+      </div>
+      <div class="dilemma-option right fragment fade-up" data-fragment-index="0">
+        <span class="arrow">➡</span>
+        <strong>Iemand verraden</strong>
+      </div>
+    </div>
+    <p class="question fragment fade-up">Waarom koos je daarvoor?</p>
+  </section>
+
+  <!-- DILEMMA 2 -->
+  <section data-auto-animate>
+    <h2 data-id="d-title" style="font-size:1.2em;">Wat zou jij doen?</h2>
+    <div class="dilemma-card">
+      <div class="dilemma-option left fragment fade-up" data-fragment-index="0">
+        <span class="arrow">⬅</span>
+        <strong>Straf op je nemen<br>voor een vriend</strong>
+      </div>
+      <div class="dilemma-option right fragment fade-up" data-fragment-index="0">
+        <span class="arrow">➡</span>
+        <strong>Zelf straf krijgen<br>terwijl je onschuldig bent</strong>
+      </div>
+    </div>
+    <p class="question fragment fade-up">Voor wie zou je dat doen?</p>
+  </section>
+
+  <!-- DILEMMA 3 -->
+  <section data-auto-animate>
+    <h2 data-id="d-title" style="font-size:1.2em;">Wat vind je belangrijker?</h2>
+    <div class="dilemma-card">
+      <div class="dilemma-option left fragment fade-up" data-fragment-index="0">
+        <span class="arrow">⬅</span>
+        <strong>Rechtvaardigheid</strong><br>
+        <span style="font-size:0.85em;opacity:0.7;">Iedereen krijgt wat hij verdient</span>
+      </div>
+      <div class="dilemma-option right fragment fade-up" data-fragment-index="0">
+        <span class="arrow">➡</span>
+        <strong>Liefde</strong><br>
+        <span style="font-size:0.85em;opacity:0.7;">Iemand redden, ook als dat niet eerlijk is</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRIDGE -->
+  <section data-auto-animate data-background-gradient="radial-gradient(ellipse at 50% 80%, #2a1015 0%, #0a0a0f 100%)">
+    <p style="font-size:1.1em; max-width:80%; margin:0 auto;">
+      Op Goede Vrijdag krijgt iemand straf<br>terwijl Hij <span class="highlight">niets</span> verkeerd heeft gedaan.<br><br>
+      <span class="fragment fade-up">En Hij doet dat <span class="highlight">vrijwillig</span>.</span>
+    </p>
+  </section>
+
+  <!-- ========== BIJBELMOMENT ========== -->
+  <section data-auto-animate data-background-gradient="radial-gradient(ellipse at 50% 100%, #1f0f0f 0%, #0a0a0f 100%)">
+    <div class="section-label">Bijbelmoment</div>
+    <h2>Johannes 19:16–18</h2>
+    <div class="verse fragment fade-up">
+      Jezus wordt naar Golgotha gebracht<br>en daar gekruisigd<br>tussen twee misdadigers.
+    </div>
+    <p class="question fragment fade-up">Wat valt jullie op?</p>
+  </section>
+
+  <!-- WHY -->
+  <section data-auto-animate>
+    <h2 style="font-size:1.4em;">Waarom moest Jezus sterven?</h2>
+    <p class="fragment fade-up">Hij had <strong>niemand</strong> kwaad gedaan.</p>
+    <p class="fragment fade-up">Geen bedrog, geen geweld — toch kreeg Hij<br>de <span class="blood-highlight">zwaarste straf</span>.</p>
+    <p class="fragment fade-up" style="margin-top:1.2em;">
+      Jezus droeg <span class="highlight">vrijwillig</span> de straf<br>die eigenlijk voor <em>ons</em> bedoeld is.
+    </p>
+  </section>
+
+  <!-- CORE MESSAGE -->
+  <section data-auto-animate data-background-gradient="radial-gradient(ellipse at 50% 50%, #1a1018 0%, #0a0a0f 100%)">
+    <h3>De kern van het Evangelie</h3>
+    <p style="font-size:1.05em; max-width:80%; margin:0.8em auto;">
+      Zelfs als wij falen of fouten maken —<br>
+      er is <span class="highlight">vergeving</span> mogelijk<br>
+      omdat Hij het voor ons draagt.
+    </p>
+    <p class="question fragment fade-up">
+      Hoe zou het voelen als iemand jouw straf<br>vrijwillig op zich neemt?
+    </p>
+  </section>
+
+  <!-- ========== ACTIVITEIT ========== -->
+  <section data-auto-animate data-background-gradient="radial-gradient(ellipse at 50% 50%, #12110f 0%, #0a0a0f 100%)">
+    <div class="section-label">Activiteit</div>
+    <h2>✏️ Schuldbriefjes</h2>
+    <ul class="activity-steps">
+      <li class="fragment fade-up">Schrijf op je papiertje iets wat verkeerd is — liegen, pesten, jaloezie, of iets persoonlijks.</li>
+      <li class="fragment fade-up">Je naam hoeft er <strong>niet</strong> op.</li>
+      <li class="fragment fade-up">We leggen alle briefjes bij het kruis.</li>
+    </ul>
+  </section>
+
+  <section data-auto-animate data-background-gradient="radial-gradient(ellipse at 50% 80%, #2a1015 0%, #0a0a0f 100%)">
+    <span class="big-icon">✝️</span>
+    <p style="max-width:80%; margin:0 auto;">
+      Jezus nam onze schuld op Zich.<br>
+      Niet omdat wij het <em>verdienden</em>,<br>
+      maar omdat Hij ons wilde <span class="highlight">redden</span>.
+    </p>
+    <p class="question fragment fade-up">Waarom zou iemand zoiets doen?</p>
+  </section>
+
+  <!-- ========== PASEN ========== -->
+  <section data-auto-animate data-background-gradient="radial-gradient(ellipse at 50% 50%, #0a0a0f 0%, #0a0a0f 100%)">
+    <p style="font-size:1.1em; opacity:0.6;">
+      Als het verhaal hier stopt…<br><br>
+    </p>
+    <p class="fragment fade-up" style="font-size:1.3em;">
+      …is het een <span class="blood-highlight">verdrietig</span> verhaal.
+    </p>
+    <p class="question fragment fade-up">Wat zou er gebeurd zijn als Jezus dood was gebleven?</p>
+  </section>
+
+  <!-- EASTER REVEAL -->
+  <section class="easter-slide" data-auto-animate
+           data-background-gradient="radial-gradient(ellipse at 50% 50%, #2a2510 0%, #0a0a0f 100%)"
+           data-transition="zoom">
+    <div class="section-label" style="border-color:var(--dawn);color:var(--dawn);">Pasen</div>
+    <span class="big-icon">🌅</span>
+    <h2 style="color:var(--dawn);">Hij is opgestaan!</h2>
+    <div class="verse" style="border-color:var(--dawn);">
+      „Hij is hier niet, want Hij is opgestaan."<br>
+      <span style="font-size:0.8em;opacity:0.7;">— Mattheüs 28:6</span>
+    </div>
+  </section>
+
+  <section class="easter-slide" data-auto-animate
+           data-background-gradient="radial-gradient(ellipse at 50% 50%, #1a2010 0%, #0a0a0f 100%)">
+    <h2 style="font-size:1.4em;color:var(--dawn);">Wat betekent dit?</h2>
+    <p class="fragment fade-up">Het graf kon Hem <strong>niet</strong> vasthouden.</p>
+    <p class="fragment fade-up">De dood heeft Hem <strong>niet</strong> overwonnen.</p>
+    <p class="fragment fade-up" style="margin-top:1em;">
+      De zonde heeft <em>niet</em> het laatste woord —<br>
+      God geeft <span class="hope-highlight">leven</span>.
+    </p>
+  </section>
+
+  <!-- ========== AFSLUITING ========== -->
+  <section data-auto-animate data-background-gradient="radial-gradient(ellipse at 50% 50%, #151520 0%, #0a0a0f 100%)">
+    <div class="section-label">Afsluitgesprek</div>
+    <h2 style="font-size:1.4em;">Praat mee</h2>
+    <div class="closing-grid">
+      <div class="closing-card fragment fade-up">
+        <h3>💬</h3>
+        <p>Wat vind jij het meest <span class="highlight">bijzondere</span> aan het paasverhaal?</p>
+      </div>
+      <div class="closing-card fragment fade-up">
+        <h3>🤔</h3>
+        <p>Wat vind je het <span class="highlight">moeilijkste</span> om te begrijpen?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL -->
+  <section data-auto-animate data-background-gradient="radial-gradient(ellipse at 50% 50%, #1a1a10 0%, #0a0a0f 100%)">
+    <svg class="cross-svg" width="60" height="85" viewBox="0 0 80 110" style="display:block;margin:0 auto 0.3em;">
+      <line x1="40" y1="5" x2="40" y2="105" stroke="#c9a96e" stroke-width="3" stroke-linecap="round"/>
+      <line x1="12" y1="35" x2="68" y2="35" stroke="#c9a96e" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+    <p style="font-size:1.05em; max-width:85%; margin:0 auto; line-height:1.8;">
+      <span class="blood-highlight">Goede Vrijdag</span> — Jezus stierf voor onze schuld.<br>
+      <span style="color:var(--dawn);font-weight:600;">Pasen</span> — Hij stond op uit de dood.<br><br>
+      <span class="fragment fade-up">Er is <span class="highlight">vergeving</span>.<br>De dood heeft niet het laatste woord.</span>
+    </p>
+  </section>
+
+</div>
+</div>
+
+<script src="dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    center: true,
+    transition: 'fade',
+    transitionSpeed: 'slow',
+    autoAnimateDuration: 0.8,
+    autoAnimateEasing: 'ease-out',
+    controlsTutorial: false,
+    progress: true,
+    fragmentInURL: false,
+    // Fragments auto-advance after appearing, reducing clicks
+    autoSlide: 0,
+    // Touch/swipe support
+    touch: true,
+    // Keyboard navigation
+    keyboard: true,
+  });
+</script>
+</body>
+</html>
