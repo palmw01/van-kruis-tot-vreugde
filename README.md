@@ -55,12 +55,14 @@ Voor de activiteit heb je nodig:
 
 Download of clone de repository.
 
+```
 git clone https://github.com/gebruikersnaam/van-kruis-tot-vreugde.git
-
+```
 Open daarna de presentatie:
 
+```
 index.html
-
+```
 
 in je browser.
 
