@@ -97,8 +97,9 @@ Navigatie:
 
 De spreektekst voor de presentatie staat in:
 
+```
 slides-tekst.md
-
+```
 
 Dit bestand bevat de tekst die je kunt voorlezen of als leidraad kunt gebruiken tijdens de presentatie.
 
